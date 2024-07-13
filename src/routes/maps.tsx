@@ -1,9 +1,11 @@
 import Map from "react-map-gl";
 
+const mapboxAccessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
+
 export function App() {
   return (
     <Map
-      mapboxAccessToken="pk.eyJ1IjoibWFpbGZhcnVxaSIsImEiOiJjbHgwMmw1MWUwY2FtMmpxdWEzZzZuaGxtIn0.y1WITnIkcAoNet2MZEL5jQ"
+      mapboxAccessToken={mapboxAccessToken}
       initialViewState={{
         longitude: -122.4,
         latitude: 37.8,
