@@ -5,7 +5,7 @@ export function RootRoute() {
     <div>
       <header>
         <h1>
-          <Link to="/">LOGO</Link>
+          <Link to="/">HEADER</Link>
         </h1>
       </header>
 
