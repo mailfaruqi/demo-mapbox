@@ -1,4 +1,5 @@
-import Map, { Marker } from "react-map-gl";
+import { useState } from "react";
+import Map, { Marker, Popup } from "react-map-gl";
 
 import "../mapbox-gl.css";
 
@@ -6,9 +7,13 @@ const mapboxAccessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
 export function MapExampleRoute() {
   const places = [
-    { latitude: -6.1753924, longitude: 106.8271528 },
-    { latitude: -6.1762405, longitude: 106.82725 },
-    { latitude: -6.1741286, longitude: 106.8284033 },
+    { latitude: -6.1753924, longitude: 106.8271528, name: "Monas" },
+    {
+      latitude: -6.1762405,
+      longitude: 106.82725,
+      name: "National Museum Gallery",
+    },
+    { latitude: -6.1741286, longitude: 106.8284033, name: "Istiqlal Mosque" },
   ];
 
   return (
@@ -31,7 +36,7 @@ interface MapboxMapProps {
     longitude: number;
     zoom: number;
   };
-  places: { latitude: number; longitude: number }[];
+  places: { latitude: number; longitude: number; name: string }[];
 }
 
 export function MapboxMap({
@@ -42,6 +47,12 @@ export function MapboxMap({
   },
   places,
 }: MapboxMapProps) {
+  const [hoveredPlace, setHoveredPlace] = useState<null | {
+    latitude: number;
+    longitude: number;
+    name: string;
+  }>(null);
+
   return (
     <Map
       mapboxAccessToken={mapboxAccessToken}
@@ -60,10 +71,24 @@ export function MapboxMap({
             src="/images/pin.png"
             width={50}
             height={20}
-            alt={`Marker ${index}`}
+            alt={place.name}
+            onMouseEnter={() => setHoveredPlace(place)}
+            onMouseLeave={() => setHoveredPlace(null)}
+            style={{ cursor: "pointer" }}
           />
         </Marker>
       ))}
+
+      {hoveredPlace && (
+        <Popup
+          longitude={hoveredPlace.longitude}
+          latitude={hoveredPlace.latitude}
+          anchor="top"
+          closeButton={false}
+        >
+          <div>{hoveredPlace.name}</div>
+        </Popup>
+      )}
     </Map>
   );
 }
