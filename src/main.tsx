@@ -1,14 +1,30 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
 
-import { App } from "./routes/maps";
+import { RootRoute } from "../src/routes/root";
+
+import "./index.css";
+import { MapExampleRoute } from "../src/routes/map-example";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <RootRoute />,
+    children: [
+      {
+        path: "/",
+        // element: <HomeRoute />,
+      },
+      {
+        path: "/about",
+        // element: <AboutRoute />,
+      },
+      {
+        path: "/map-example",
+        element: <MapExampleRoute />,
+      },
+    ],
   },
 ]);
 
