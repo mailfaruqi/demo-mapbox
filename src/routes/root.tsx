@@ -4,7 +4,9 @@ export function RootRoute() {
   return (
     <div>
       <header>
-        <h1>LOGO</h1>
+        <h1>
+          <Link to="/">LOGO</Link>
+        </h1>
       </header>
 
       <Outlet />
