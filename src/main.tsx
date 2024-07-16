@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootRoute } from "../src/routes/root";
 
 import "./index.css";
-import { MapExampleRoute } from "../src/routes/map-example";
+import { MapMarker } from "./routes/map-example";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
         // element: <AboutRoute />,
       },
       {
-        path: "/map-example",
-        element: <MapExampleRoute />,
+        path: "/map-marker",
+        element: <MapMarker />,
       },
     ],
   },

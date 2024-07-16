@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Map, { Marker, Popup } from "react-map-gl";
 
-import "../mapbox-gl.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 const mapboxAccessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-export function MapExampleRoute() {
+export function MapMarker() {
   const places = [
     { latitude: -6.1753924, longitude: 106.8271528, name: "Monas" },
     {

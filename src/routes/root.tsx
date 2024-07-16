@@ -12,7 +12,7 @@ export function RootRoute() {
       <Outlet />
 
       <h1>
-        <Link to="/map-example">Map</Link>
+        <Link to="/map-marker">1. Multiple Points</Link>
       </h1>
 
       <footer>
